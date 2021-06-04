@@ -7,8 +7,8 @@ const criarTarefa = (event) => {
   const tarefa = document.createElement("li");
 
   tarefa.classList.add("task");
-  const conteudo = (document.createElement("p").textContent = valor);
-  tarefa.textContent = conteudo;
+  const conteudo = `<p class="content">${valor}</p>`;
+  tarefa.innerHTML = conteudo;
 
   tarefa.appendChild(BotaConclui());
   lista.appendChild(tarefa);
@@ -25,9 +25,15 @@ const BotaConclui = () => {
 
   botaoConclui.classList.add("check-button");
   botaoConclui.innerText = "concluir";
-  botaoConclui.addEventListener("click", () => {
-    console.log("Funciona!");
-  });
+  botaoConclui.addEventListener("click", concluirTarefa);
 
   return botaoConclui;
+};
+
+const concluirTarefa = (event) => {
+  const botaoConclui = event.target;
+
+  const tarefaCompleta = botaoConclui.parentElement;
+
+  tarefaCompleta.classList.toggle("done");
 };
