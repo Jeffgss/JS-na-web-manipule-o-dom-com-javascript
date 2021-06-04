@@ -1,15 +1,17 @@
 const criarTarefa = (event) => {
   event.preventDefault();
 
+  const lista = document.querySelector("[data-list]");
   const input = document.querySelector("[data-form-input]");
   const valor = input.value;
+  const tarefa = document.createElement("li");
 
-  const tarefa = document.querySelector("[data-task]");
-  const conteudo = `<p class="content">${valor}</p>`;
+  tarefa.classList.add("task");
+  const conteudo = (document.createElement("p").textContent = valor);
+  tarefa.textContent = conteudo;
+  lista.appendChild(tarefa);
 
-  tarefa.innerHTML = conteudo;
-
-  input.value = " ";
+  input.value = "";
 };
 
 const novaTarefa = document.querySelector("[data-form-button]");
